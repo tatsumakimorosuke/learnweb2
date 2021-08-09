@@ -136,38 +136,7 @@ td {
 					<section class="features">
 						<h2 title="to get hope.no matter what someone say">LIST</h2>
 						<div class="container">
-							<%
-								ItemsViewModel vm = new ItemsViewModel();
-								List<Item> items = vm.itemList();
-							%>
-							<form action="itemDetail" name="itemSelect" method="post">
-								<table>
-									<col width=15%>
-									<col width=45%>
-									<col width=25%>
-									<col width=15%>
-									<thead>
-										<tr>
-											<td>code</td>
-											<td>name</td>
-											<td></td>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- Loop Start -->
-										<%
-											for (Item item : items) {
-										%>
-										<tr>
-											<td><%=item.getProductCd()%></td>
-											<td><%=item.getProductNm()%></td>
-											<td><button type="button"
-													onclick="selectCode('<%=item.getProductCd()%>')">Details</button></td>
-										</tr>
-										<!-- Loop End -->
-										<%
-											}
-										%>
+
 									</tbody>
 								</table>
 								<input type="hidden" name="selectedCode" id="selectedCode">
