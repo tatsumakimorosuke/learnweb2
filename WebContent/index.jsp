@@ -4,10 +4,10 @@
 <%@ page import="shopping.ItemSummaryView"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript">
@@ -136,7 +136,38 @@ td {
 					<section class="features">
 						<h2 title="to get hope.no matter what someone say">LIST</h2>
 						<div class="container">
-
+							<%
+								ItemsViewModel vm = new ItemsViewModel();
+								List<Item> items = vm.itemList();
+							%>
+							<form action="itemDetail" name="itemSelect" method="post">
+								<table>
+									<col width=15%>
+									<col width=45%>
+									<col width=25%>
+									<col width=15%>
+									<thead>
+										<tr>
+											<td>code</td>
+											<td>name</td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Loop Start -->
+										<%
+											for (Item item : items) {
+										%>
+										<tr>
+											<td><%=item.getProductCd()%></td>
+											<td><%=item.getProductNm()%></td>
+											<td><button type="button"
+													onclick="selectCode('<%=item.getProductCd()%>')">Details</button></td>
+										</tr>
+										<!-- Loop End -->
+										<%
+											}
+										%>
 									</tbody>
 								</table>
 								<input type="hidden" name="selectedCode" id="selectedCode">
